@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator</title>
+    <style>
+        .input-field {
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid;
+            border-radius: 4px;
+            padding: 8px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        input {
+            padding: 5px;
+            margin: 5px;
+            display: block;
+            width: 100%;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+        .delete-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .grade-a {
+            background-color: lightgreen;
+        }
+        .grade-f {
+            background-color: lightcoral;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-top: -5px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 0px;
+            text-align: center;
+        }
+        .dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .toggle-container {
+            display:inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 10px;
+        }
+    </style>
+<!--- <script defer data-domain="green-marijo-26.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script><script type="text/javascript" src="https://tiiny.host/ad-script.js"></script><script defer data-domain="green-marijo-26.tiiny.site" src="https://analytics.tiiny.site/js/plausible.js"></script><script type="text/javascript" src="https://tiiny.host/ad-script.js"></script>--></head>
+<body>
+    <div class="toggle-container">
+        <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+        </label>
+        <span>Enable Dark Mode</span>
+    </div>
+    <div class="container">
+        <h1>RSCI</h1>
+        <h2>GPA Calculator</h2>
+        
+        <label>Course Name:</label>
+        <input type="text" id="courseName" placeholder="Enter Course Name" class="input-field">
+        <p class="error" id="nameError"></p>
+
+        <label>Credit Hours:</label>
+        <input type="number" id="creditHours" placeholder="Enter Credit Hours" min="1" max="4" class="input-field">
+        <p class="error" id="creditError"></p>
+
+        <label>Obtained Marks:</label>
+        <input type="number" id="marks" placeholder="Enter Marks" class="input-field">
+        <p class="error" id="marksError"></p>
+
+        <button onclick="addCourse()">Add Course</button>
+
+        <table id="courseTable">
+            <tr>
+                <th>Course Name</th>
+                <th>Credit Hours</th>
+                <th>Obtained Marks</th>
+                <th>Grade Points</th>
+                <th>Letter Grade</th>
+                <th>Action</th>
+            </tr>
+        </table>
+
+        <button onclick="calculateGPA()">Calculate GPA</button>
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        let courses = [];
+
+        function getGradeDetails(marks) {
+            if (marks >= 90) return { gradePoint: 4.0, letter: "A+" };
+            if (marks >= 80) return { gradePoint: 4.0, letter: "A" };
+            if (marks >= 79) return { gradePoint: 3.9, letter: "A-" };
+            if (marks >= 78) return { gradePoint: 3.8, letter: "A-" };
+            if (marks >= 77) return { gradePoint: 3.7, letter: "B+" };
+            if (marks >= 76) return { gradePoint: 3.6, letter: "B+" };
+            if (marks >= 75) return { gradePoint: 3.5, letter: "B+" };
+            if (marks >= 74) return { gradePoint: 3.4, letter: "B+" };
+            if (marks >= 73) return { gradePoint: 3.3, letter: "B" };
+            if (marks >= 72) return { gradePoint: 3.2, letter: "B" };
+            if (marks >= 71) return { gradePoint: 3.1, letter: "B" };
+            if (marks >= 70) return { gradePoint: 3.0, letter: "B" };
+            if (marks >= 69) return { gradePoint: 2.9, letter: "B-" };
+            if (marks >= 68) return { gradePoint: 2.8, letter: "B-" };
+            if (marks >= 67) return { gradePoint: 2.7, letter: "C+" };
+            if (marks >= 66) return { gradePoint: 2.6, letter: "C+" };
+            if (marks >= 65) return { gradePoint: 2.5, letter: "C+" };
+            if (marks >= 64) return { gradePoint: 2.4, letter: "C+" };
+            if (marks >= 63) return { gradePoint: 2.3, letter: "C" };
+            if (marks >= 62) return { gradePoint: 2.2, letter: "C" };
+            if (marks >= 61) return { gradePoint: 2.1, letter: "C" };
+            if (marks >= 60) return { gradePoint: 2.0, letter: "C" };
+            if (marks >= 59) return { gradePoint: 1.9, letter: "C-" };
+            if (marks >= 58) return { gradePoint: 1.8, letter: "C-" };
+            if (marks >= 57) return { gradePoint: 1.7, letter: "D+" };
+            if (marks >= 56) return { gradePoint: 1.6, letter: "D+" };
+            if (marks >= 55) return { gradePoint: 1.5, letter: "D+" };
+            if (marks >= 54) return { gradePoint: 1.4, letter: "D+" };
+            if (marks >= 53) return { gradePoint: 1.3, letter: "D" };
+            if (marks >= 52) return { gradePoint: 1.2, letter: "D" };
+            if (marks >= 51) return { gradePoint: 1.1, letter: "D" };
+            if (marks >= 50) return { gradePoint: 1.0, letter: "D" };
+            if (marks >= 50) return { gradePoint: 1.0, letter: "D" };
+            return { gradePoint: 0.0, letter: "F" };
+        }
+
+        function addCourse() {
+            let name = document.getElementById("courseName").value.trim();
+            let credit = parseFloat(document.getElementById("creditHours").value);
+            let marks = parseFloat(document.getElementById("marks").value);
+
+      
+            document.getElementById("nameError").innerText = "";
+            document.getElementById("creditError").innerText = "";
+            document.getElementById("marksError").innerText = "";
+
+        
+            let nameRegex = /^[A-Za-z\s]+$/;
+            if (!nameRegex.test(name)) {
+                document.getElementById("nameError").innerText = "Course name must contain only letters.";
+                return;
+            }
+
+         
+            if (credit < 1 || credit > 4 || isNaN(credit)) {
+                document.getElementById("creditError").innerText = "Credit hours must be between 1 and 4.";
+                return;
+            }
+
+           
+            if (marks <= 0 || marks > 100 || isNaN(marks)) {
+                document.getElementById("marksError").innerText = "Marks must be greater than 0 and ≤ 100.";
+                return;
+            }
+
+            let { gradePoint, letter } = getGradeDetails(marks);
+            let index = courses.length;
+
+            courses.push({ name, credit, marks, gradePoint, letter });
+
+            let table = document.getElementById("courseTable");
+            let row = table.insertRow();
+            row.insertCell(0).innerText = name;
+            row.insertCell(1).innerText = credit;
+            row.insertCell(2).innerText = marks;
+            row.insertCell(3).innerText = gradePoint;
+            row.insertCell(4).innerText = letter;
+
+            if (letter === "A" || letter === "A+") {
+                row.classList.add("grade-a");
+            } else if (letter === "F") {
+                row.classList.add("grade-f");
+            }
+
+            let deleteCell = row.insertCell(5);
+            let deleteButton = document.createElement("button");
+            deleteButton.innerText = "Delete";
+            deleteButton.classList.add("delete-btn");
+            deleteButton.onclick = function () { deleteCourse(index); };
+            deleteCell.appendChild(deleteButton);
+
+           
+            document.getElementById("courseName").value = "";
+            document.getElementById("creditHours").value = "";
+            document.getElementById("marks").value = "";
+        }
+
+        function deleteCourse(index) {
+            courses.splice(index, 1);
+            document.getElementById("courseTable").deleteRow(index + 1);
+        }
+
+        function calculateGPA() {
+            let totalPoints = 0, totalCredits = 0;
+            courses.forEach(course => {
+                totalPoints += course.credit * course.gradePoint;
+                totalCredits += course.credit;
+            });
+            let gpa = totalCredits ? (totalPoints / totalCredits).toFixed(2) : 0;
+            document.getElementById("result").innerText = "GPA: " + gpa;
+        }
+
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                body.classList.add('dark-mode');
+            } else {
+                body.classList.remove('dark-mode');
+            }
+        });
+    </script>
+
+    <footer style="margin-top: 20px; font-weight: bold;">by Hafiz Muhammad Saad</footer>
+</body>
+</html>
