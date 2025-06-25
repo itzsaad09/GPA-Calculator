@@ -39,6 +39,11 @@ To use the GPA Calculator, simply open the index.html file in any modern web bro
 5. **Delete Course:** If you need to remove a course, click the "Delete" button located in the "Action" column next to the specific course in the table.
 6. **Toggle Dark Mode:** At the top of the page, use the "Enable Dark Mode" switch to toggle between the light and dark themes.
 
+## Grade Point System
+The GPA calculation in this application uses the following grade point assignments:
+**Marks Range**               **Grade Point**               **Letter Grade**
+
+
 ## Technologies Used
 - **HTML5:** For the structure and content of the web page.
 - **CSS3:** For styling the application, including responsive design and the dark mode theme.
