@@ -41,8 +41,42 @@ To use the GPA Calculator, simply open the index.html file in any modern web bro
 
 ## Grade Point System
 The GPA calculation in this application uses the following grade point assignments:<br/>
-**Marks Range**               **Grade Point**               **Letter Grade**
-
+----------------------------------------------------------------------------------------
+|      **Marks Range**      |      **Grade Point**       |      **Letter Grade**       |
+|         90 - 100          |            4.0             |             A+              |
+|         80 - 89           |            4.0             |             A               |
+|           79              |            3.9             |             A-              |
+|           78              |            3.8             |             A-              |
+|           77              |            3.7             |             B+              |
+|           76              |            3.6             |             B+              |
+|           75              |            3.5             |             B+              |
+|           74              |            3.4             |             B+              |
+|           73              |            3.3             |             B               |
+|           72              |            3.2             |             B               |
+|           71              |            3.1             |             B               |
+|           70              |            3.0             |             B               |
+|           69              |            2.9             |             B-              |
+|           68              |            2.8             |             B-              |
+|           67              |            2.7             |             C+              |
+|           66              |            2.6             |             C+              |
+|           65              |            2.5             |             C+              |
+|           64              |            2.4             |             C+              |
+|           63              |            2.3             |             C               |
+|           62              |            2.2             |             C               |
+|           61              |            2.1             |             C               |
+|           60              |            2.0             |             C               |
+|           59              |            1.9             |             C-              |
+|           58              |            1.8             |             C-              |
+|           57              |            1.7             |             D+              |
+|           56              |            1.6             |             D+              |
+|           55              |            1.5             |             D+              |
+|           54              |            1.4             |             D+              |
+|           53              |            1.3             |             D               |
+|           52              |            1.2             |             D               |
+|           51              |            1.1             |             D               |
+|           50              |            1.0             |             D               |
+|         Below 50          |            0.0             |             F               |
+----------------------------------------------------------------------------------------
 
 ## Technologies Used
 - **HTML5:** For the structure and content of the web page.
