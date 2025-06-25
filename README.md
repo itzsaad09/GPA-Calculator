@@ -40,7 +40,7 @@ To use the GPA Calculator, simply open the index.html file in any modern web bro
 6. **Toggle Dark Mode:** At the top of the page, use the "Enable Dark Mode" switch to toggle between the light and dark themes.
 
 ## Grade Point System
-The GPA calculation in this application uses the following grade point assignments:
+The GPA calculation in this application uses the following grade point assignments:<br/>
 **Marks Range**               **Grade Point**               **Letter Grade**
 
 
