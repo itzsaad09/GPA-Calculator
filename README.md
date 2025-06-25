@@ -41,7 +41,7 @@ To use the GPA Calculator, simply open the index.html file in any modern web bro
 
 ## Grade Point System
 The GPA calculation in this application uses the following grade point assignments:<br/>
-----------------------------------------------------------------------------------------<br/>
+---------------------------------------------------------------------------------------<br/>
 |      **Marks Range**      |      **Grade Point**       |      **Letter Grade**       |<br/>
 |         90 - 100          |            4.0             |             A+              |<br/>
 |         80 - 89           |            4.0             |             A               |<br/>
@@ -76,7 +76,7 @@ The GPA calculation in this application uses the following grade point assignmen
 |           51              |            1.1             |             D               |<br/>
 |           50              |            1.0             |             D               |<br/>
 |         Below 50          |            0.0             |             F               |<br/>
-----------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
 
 ## Technologies Used
 - **HTML5:** For the structure and content of the web page.
