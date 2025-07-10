@@ -23,7 +23,7 @@ This is a simple, client-side web application designed to help users calculate t
 ## Installation
 This GPA Calculator is a static HTML file and does not require any special installation or server setup.
 1. **Clone the repository (if applicable):**
-   git clone [https://github.com/your-username/gpa-calculator.git](https://github.com/itzsaad09/GPA-Calculator.git)
+   git clone [https://github.com/itzsaad09/gpa-calculator.git](https://github.com/itzsaad09/GPA-Calculator.git)
 2. **Download manually:**
    If you're not using Git, you can simply download the index.html file and any associated assets directly from the repository.
 
