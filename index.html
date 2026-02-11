@@ -363,10 +363,72 @@
         grid-template-columns: 1fr;
       }
 
+      /* Responsive Table (Card View) */
+      table,
+      thead,
+      tbody,
       th,
+      td,
+      tr {
+        display: block;
+      }
+
+      thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+
+      table {
+        border: none;
+      }
+
+      tr {
+        margin-bottom: 1rem;
+        background-color: var(--input-bg);
+        border-radius: 12px;
+        padding: 1rem;
+        box-shadow: var(--shadow-sm);
+        border: 1px solid var(--border-color);
+      }
+
+      tr:last-child {
+        margin-bottom: 0;
+      }
+
       td {
-        padding: 0.75rem 0.5rem;
-        font-size: 0.875rem;
+        border: none;
+        position: relative;
+        padding: 0.5rem 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        /* very light divider */
+      }
+
+      [data-theme="dark"] td {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      td:last-child {
+        border-bottom: none;
+        padding-top: 1rem;
+        margin-top: 0.5rem;
+        justify-content: flex-end;
+      }
+
+      td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--text-secondary);
+        text-align: left;
+        margin-right: 1rem;
+      }
+
+      td:last-child::before {
+        display: none;
       }
     }
   </style>
@@ -429,7 +491,7 @@
   </div>
 
   <footer>
-    <p>Designed & Developed with <span style="color: #ef4444;">❤</span> by <span class="footer-name">Hafiz Muhammad
+    <p>Designed & Developed by <span class="footer-name">Hafiz Muhammad
         Saad</span></p>
   </footer>
 
@@ -506,12 +568,24 @@
       courses.forEach((course, index) => {
         let row = tbody.insertRow();
 
-        row.insertCell(0).innerText = course.name;
-        row.insertCell(1).innerText = course.credit;
-        row.insertCell(2).innerText = course.marks;
-        row.insertCell(3).innerText = course.gradePoint;
+        let cName = row.insertCell(0);
+        cName.innerText = course.name;
+        cName.setAttribute('data-label', 'Course Name');
+
+        let cCredit = row.insertCell(1);
+        cCredit.innerText = course.credit;
+        cCredit.setAttribute('data-label', 'Credits');
+
+        let cMarks = row.insertCell(2);
+        cMarks.innerText = course.marks;
+        cMarks.setAttribute('data-label', 'Marks');
+
+        let cPoints = row.insertCell(3);
+        cPoints.innerText = course.gradePoint;
+        cPoints.setAttribute('data-label', 'Points');
 
         let gradeCell = row.insertCell(4);
+        gradeCell.setAttribute('data-label', 'Grade');
         let gradeSpan = document.createElement("span");
         gradeSpan.innerText = course.letter;
         gradeSpan.className = "grade-tag";
@@ -525,6 +599,7 @@
 
 
         let deleteCell = row.insertCell(5);
+        deleteCell.setAttribute('data-label', 'Action');
         let deleteButton = document.createElement("button");
         deleteButton.innerText = "Delete";
         deleteButton.className = "btn btn-danger";
