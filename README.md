@@ -1,6 +1,6 @@
-# GPA Calculator
+# GPA & CGPA Calculator
 
-This is a simple, client-side web application designed to help users calculate their Grade Point Average (GPA) based on entered course details. It features an intuitive interface, automatic grade point and letter grade assignment, and a dark mode for enhanced user comfort.
+A client-side web application designed to help users calculate both their Semester Grade Point Average (GPA/SGPA) and Cumulative Grade Point Average (CGPA) based on academic records. It features a responsive layout, automatic grade point and letter grade mapping, a dynamic launch announcement popup, interactive printing animations, downloadable report cards, and a dark mode toggle.
 
 ## Table of Contents
 - [Features](#features)
@@ -8,39 +8,39 @@ This is a simple, client-side web application designed to help users calculate t
 - [Usage](#usage)
 - [Grade Point System](#grade-point-system)
 - [Technologies Used](#technologies-used)
-- [Contributing](#contibuting)
+- [Contributing](#contributing)
 - [License](#license)
 - [Author](#author)
 
 ## Features
-- **Add Courses:** Easily input course names, credit hours, and obtained marks.
-- **Automatic Grade Calculation:** The application dynamically assigns grade points and letter grades based on the provided marks.
-- **GPA Calculation:** Calculates and displays the overall GPA based on all added courses.
-- **Delete Courses:** Option to remove individual courses from the table if needed.
-- **Dark Mode:** A toggle switch to switch between light and dark themes for better readability and aesthetics.
-- **Input Validation:** Basic validation ensures correct data entry for course names (letters only), credit hours (1-4), and marks (0-100).
+- **Two Calculator Modes:** Select between **GPA Calculator (SGPA)** and **CGPA Calculator (Cumulative)** using a toggle dropdown.
+- **Dynamic Headers:** Table headers are hidden by default and only slide in once the first course or semester is added.
+- **Add Courses & Semesters:** Input names, credit hours, and grades/marks dynamically.
+- **Automatic Grade Mapping:** Translates obtained marks to letter grades and grade points instantly.
+- **Calculations & Print Animation:** Features an interactive widget that runs a retro printing animation when calculating results.
+- **Report Card Image Downloads:** Automatically generates and saves a customized, high-fidelity PNG report card image of the table and calculated average.
+- **Dark Mode:** A styled switch toggle to transition between light and dark themes.
 
 ## Installation
-This GPA Calculator is a static HTML file and does not require any special installation or server setup.
-1. **Clone the repository (if applicable):**
-   git clone [https://github.com/itzsaad09/gpa-calculator.git](https://github.com/itzsaad09/GPA-Calculator.git)
-2. **Download manually:**
-   If you're not using Git, you can simply download the index.html file and any associated assets directly from the repository.
+This GPA & CGPA Calculator is a static client-side web app and does not require any build tools or server environment.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/itzsaad09/GPA-Calculator.git
+   ```
+2. **Launch:** Open `index.html` in any web browser.
 
 ## Usage
-To use the GPA Calculator, simply open the index.html file in any modern web browser.
-1.** Open index.html:** Navigate to the downloaded index.html file and open it in your preferred web browser (e.g., Chrome, Firefox, Edge, Safari).
-2. **Enter Course Details:**
-   - **Course Name:** Type in the name of your course (e.g., "Introduction to Programming").
-   - **Credit Hours:** Enter the number of credit hours for the course (e.g., "3" for a typical course).
-   - **Obtained Marks:** Input the numerical marks you received for the course (e.g., "85").
-3. **Add Course:** Click the "Add Course" button. The course will appear in the table below the input fields.
-4. **Calculate GPA:** Once all desired courses are added, click the "Calculate GPA" button to see your overall GPA displayed.
-5. **Delete Course:** If you need to remove a course, click the "Delete" button located in the "Action" column next to the specific course in the table.
-6. **Toggle Dark Mode:** At the top of the page, use the "Enable Dark Mode" switch to toggle between the light and dark themes.
+### GPA Calculator (SGPA) Mode
+1. **Enter Course Details:** Input the course name, credits (1-4), and marks (0-100).
+2. **Add & Edit:** Click "Add Course". You can edit or delete rows dynamically.
+3. **Calculate & Save:** Click "Calculate GPA" to see the retro printer widget run, then choose "Save Result" to download the PNG report card.
+
+### CGPA Calculator Mode
+1. **Enter Semester Details:** Input the semester name (defaults to "Semester X"), GPA (0.00-4.00), and credit hours.
+2. **Add & Calculate:** Click "Add Semester", then "Calculate CGPA" to run the animation and export your cumulative report card.
 
 ## Grade Point System
-The GPA calculation in this application uses the following grade point assignments:<br/>
+The GPA calculation uses the following grade point mappings:
 
 | Marks Range | Grade Point | Letter Grade |
 |-------------|-------------|--------------|
@@ -79,21 +79,23 @@ The GPA calculation in this application uses the following grade point assignmen
 | Below 50    | 0.0         | F            |
 
 ## Technologies Used
-- **HTML5:** For the structure and content of the web page.
-- **CSS3:** For styling the application, including responsive design and the dark mode theme.
-- **JavaScript:** For all interactive functionalities, such as adding/deleting courses, calculating GPA, and toggling dark mode.
+- **HTML5:** Structures content and modal frames.
+- **CSS3:** Governs custom layouts, dark mode variables, and animations (such as the entrance slide-bounce and retro printer paper-feed).
+- **JavaScript:** Handles CRUD states, mathematical GPA/CGPA algorithms, dynamic titles, and event bindings.
+- **html2canvas:** Capture and export offscreen CSS templates as PNG images.
 
 ## Contributing
-Contributions are welcome! If you have suggestions for improvements, bug fixes, or new features, please feel free to:
+Contributions are welcome!
 1. **Fork** this repository.
-2. **Create a new branch** (git checkout -b feature/YourFeature).
-3. **Make your changes.**
-4. **Commit your changes** (git commit -m 'Add some feature').
-5. **Push to the branch** (git push origin feature/YourFeature).
-6. **Open a Pull Request.**
+2. **Create a branch:** `git checkout -b feature/YourFeature`
+3. **Commit your changes:** `git commit -m 'Add some feature'`
+4. **Push:** `git push origin feature/YourFeature`
+5. **Open a Pull Request.**
 
 ## License
-This project is open-source and available under the MIT License.
+This project is open-source and licensed under the MIT License.
 
 ## Author
 ### Hafiz Muhammad Saad
+- **GitHub:** [@itzsaad09](https://github.com/itzsaad09)
+- **LinkedIn:** [Hafiz Muhammad Saad](https://www.linkedin.com/in/itzsaad09/)
