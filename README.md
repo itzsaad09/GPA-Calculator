@@ -96,6 +96,5 @@ Contributions are welcome!
 This project is open-source and licensed under the MIT License.
 
 ## Author
-### Hafiz Muhammad Saad
 - **GitHub:** [Hafiz Muhammad Saad](https://github.com/itzsaad09)
 - **LinkedIn:** [Hafiz Muhammad Saad](https://www.linkedin.com/in/itzsaad09/)
