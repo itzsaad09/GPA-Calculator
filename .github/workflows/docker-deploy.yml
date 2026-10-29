@@ -22,25 +22,25 @@ jobs:
 
       - name: Build website image
         shell: powershell
-        run: docker build -t classroom-website:${{ github.sha }} .
+        run: docker build -t riphah-gpa-app:${{ github.sha }} .
 
       - name: Replace classroom website
         shell: powershell
         run: |
-          $name = "classroom-website"
-          $image = "classroom-website:${{ github.sha }}"
+          $name = "riphah-gpa-app"
+          $image = "riphah-gpa-app:${{ github.sha }}"
           $existing = docker ps -aq --filter "name=^/$name$"
           if ($LASTEXITCODE -ne 0) { throw "Cannot query Docker containers" }
           if ($existing) {
             docker rm -f $name
             if ($LASTEXITCODE -ne 0) { throw "Unable to remove existing container" }
           }
-          docker run -d --name $name -p 8080:80 --restart unless-stopped $image
+          docker run -d --name $name -p 8081:80 --restart unless-stopped $image
           if ($LASTEXITCODE -ne 0) { throw "Container failed to start" }
 
       - name: Verify local HTTP response
         shell: powershell
         run: |
           Start-Sleep -Seconds 3
-          $response = Invoke-WebRequest -Uri http://localhost:8080/ -UseBasicParsing
+          $response = Invoke-WebRequest -Uri http://localhost:8081/ -UseBasicParsing
           if ($response.StatusCode -ne 200) { throw "Website health check failed" }
